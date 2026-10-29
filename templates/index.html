@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Памятка СНО✈️</title>
+
+    <!-- Подключаем Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Подключаем иконки Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Подключаем шрифт -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Базовые настройки --- */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* --- 1. Шапка с картинкой и стеклянной подложкой --- */
+        .hero-section {
+            background: url('/static/plane.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 150px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            font-weight: 800;
+            font-size: 18px;
+            letter-spacing: 2px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 50px;
+            backdrop-filter: blur(5px);
+        }
+
+        .glass-container {
+            display: inline-block;
+            padding: 30px 50px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .glass-container h1,
+        .glass-container p {
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+            margin-bottom: 0;
+        }
+
+        /* --- 2. Синяя полоса --- */
+        .blue-banner {
+            background: linear-gradient(90deg, #0056b3, #0088cc);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            font-size: 28px;
+            font-weight: 800;
+            box-shadow: 0 5px 15px rgba(0,86,179,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- 3. Карточки шагов --- */
+        .step-card {
+            background: white;
+            border: none;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #0056b3, #0088cc);
+            color: white;
+            font-size: 28px;
+            font-weight: 800;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 25px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,136,204,0.4);
+        }
+
+        .step-content h5 {
+            font-weight: 800;
+            color: #0056b3;
+            margin-bottom: 15px;
+        }
+
+        .btn-green {
+            background: linear-gradient(135deg, #2e8b57, #3cb371);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+        }
+        .btn-green:hover {
+            background: linear-gradient(135deg, #246b43, #2e8b57);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* --- Иконки браузеров --- */
+        .browser-icons {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+        .browser-item {
+            position: relative;
+            font-size: 50px; /* Увеличили размер иконок */
+            margin-right: 20px;
+            margin-bottom: 10px;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .browser-item:hover { transform: scale(1.2); }
+
+        /* Яркие цвета брендов */
+        .fa-chrome { color: #4285F4; }
+        .fa-firefox-browser { color: #FF7139; }
+        .fa-edge { color: #0078D7; }
+        .fa-yandex { color: #FC3F1D; }
+        .fa-opera { color: #FF1B2D; }
+
+        /* Перечеркивание Оперы */
+        .not-recommended { opacity: 0.5; } /* Сделали иконку бледной */
+
+        .cross-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ff0000; /* Ярко-красный */
+            font-size: 55px; /* Большой размер крестика */
+            text-shadow: 0 0 10px white, 0 0 10px white, 0 0 10px white; /* Белая обводка */
+            font-weight: bold;
+        }
+
+        /* --- 4. QR-код --- */
+        .qr-section {
+            text-align: center;
+            padding: 60px 0;
+        }
+        .qr-section img {
+            max-width: 220px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .qr-section img:hover { transform: scale(1.1) rotate(5deg); }
+
+        /* --- 5. Блок с контактами --- */
+        .contact-section {
+            padding: 60px 0;
+            background: #fff;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid #0088cc;
+            text-align: center;
+        }
+
+        .contact-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            padding: 12px 25px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #e0e0e0;
+        }
+
+        .contact-link:hover {
+            background: #eef4ff;
+            color: #0056b3;
+            transform: translateY(-2px);
+            border-color: #b3d4ff;
+        }
+
+        /* Анимация появления при прокрутке */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. Шапка -->
+    <div class="hero-section">
+        <div class="logo">СНО КОЛЬЦОВО</div>
+
+        <div class="glass-container">
+            <h1 class="display-3 fw-bold mb-3">Аэропорт Кольцово</h1>
+            <p class="lead fs-4 mb-0">Твой личный гид по учебному порталу</p>
+        </div>
+    </div>
+
+    <!-- 2. Синий блок -->
+    <div class="blue-banner">
+        КАК ВОЙТИ В УЧЕБНЫЙ ПОРТАЛ ISPRING
+    </div>
+
+    <!-- 3. Основной контент -->
+    <div class="container mt-5 mb-5">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+
+                <!-- Шаг 1 -->
+                <div class="step-card reveal">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h5>Открой сайт</h5>
+                        <p>Перейди по ссылке ниже, чтобы начать:</p>
+                        <a href="https://ar-edu.ru" target="_blank" class="btn-green">Перейти на ar-edu.ru</a>
+                    </div>
+                </div>
+
+                <!-- Шаг 2 -->
+                <div class="step-card reveal">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h5>Войди в систему</h5>
+                        <p><b>Логин:</b> твой СНИЛС <br>
+                        <b>Пароль:</b> дата рождения без точек (например, 15031985)</p>
+                    </div>
+                </div>
+
+                <!-- Шаг 3 (Цветные иконки и большой крестик) -->
+                <div class="step-card reveal">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h5>Выбери браузер</h5>
+                        <p class="mb-0">Для стабильной работы портала лучше всего подходят:</p>
+
+                        <div class="browser-icons">
+                            <span class="browser-item" title="Яндекс Браузер"><i class="fa-brands fa-yandex"></i></span>
+                            <span class="browser-item" title="Google Chrome"><i class="fa-brands fa-chrome"></i></span>
+                            <span class="browser-item" title="Firefox"><i class="fa-brands fa-firefox-browser"></i></span>
+                            <span class="browser-item" title="Microsoft Edge"><i class="fa-brands fa-edge"></i></span>
+                            <span class="mx-2 text-muted">|</span>
+                            <span class="browser-item not-recommended" title="Opera (не рекомендуется)">
+                                <i class="fa-brands fa-opera"></i>
+                                <i class="fa-solid fa-ban cross-icon"></i>
+                            </span>
+                        </div>
+
+                        <p class="mt-3 text-muted" style="font-size: 0.9rem;">
+                            <span style="color: #2e8b57;">✅ Рекомендуется</span> &nbsp;&nbsp;
+                            <span style="color: #dc3545;">❌ Opera — могут быть сбои</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Шаг 4 -->
+                <div class="step-card reveal">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h5>Мобильное приложение</h5>
+                        <p>Если учишься с телефона:<br>
+                        • Скачай приложение <b>iSpring LMS</b>.<br>
+                        • Введи URL: <b>ar-edu.ru</b><br>
+                        • Логин и пароль те же.</p>
+                    </div>
+                </div>
+
+                <!-- Шаг 5 -->
+                <div class="step-card reveal">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h5>Начни обучение</h5>
+                        <p>• После входа нажми на название курса.<br>
+                        • Затем нажми кнопку <b>«Начать обучение»</b>. Всё получится!</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. QR-код -->
+    <div class="blue-banner" style="font-size: 20px; padding: 20px;">
+        ИЛИ ПРОСТО ОТСКАНИРУЙ QR-КОД
+    </div>
+
+    <div class="qr-section reveal">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://ar-edu.ru" alt="QR Код">
+        <p class="mt-3 text-muted">Наведи камеру телефона</p>
+    </div>
+
+    <!-- 5. Блок контактов -->
+    <div class="contact-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="contact-card reveal">
+                        <p class="mb-2 text-muted">По всем вопросам, связанным с обучением, обращайтесь:</p>
+                        <h4 class="fw-bold mb-4" style="color: #0056b3;">Лебедевой Алёне Михайловне</h4>
+
+                        <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mb-4">
+                            <a href="tel:+73432268161" class="contact-link">
+                                <i class="fa-solid fa-phone-volume text-danger me-2"></i>
+                                +7 (343) 226-81-61 <small class="text-muted ms-1">(доб. 8161)</small>
+                            </a>
+
+                            <a href="mailto:a.lebedeva@koltsovo.ru" class="contact-link">
+                                <i class="fa-solid fa-envelope text-primary me-2"></i>
+                                a.lebedeva@koltsovo.ru
+                            </a>
+                        </div>
+
+                        <p class="mb-0 text-muted" style="font-size: 0.85rem;">
+                            <i class="fa-regular fa-clock me-1"></i> Консультации предоставляются в рабочее время. Для оперативной связи лучше использовать корпоративную почту или внутренний номер.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Анимация при прокрутке
+        window.addEventListener('scroll', reveal);
+        function reveal() {
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        // Вызываем один раз при загрузке
+        reveal();
+    </script>
+</body>
+</html>
